@@ -21,7 +21,7 @@ spec:
       containers:
         - name: green-deploy
           # AWS ECR에 저장된 이미지 경로 및 태그(v1.0.0)
-          image: 640107381732.dkr.ecr.ap-northeast-2.amazonaws.com/wsk1/grapp:v1.0.1
+          image: 640107381732.dkr.ecr.ap-northeast-2.amazonaws.com/wsk1/grapp:v1.0.0
           ports:
             - containerPort: 8080 # 컨테이너가 사용하는 포트
           envFrom:
