@@ -12,7 +12,7 @@ env:
     TARGET_REPO: "wskd1-green"            # 배포용 매니페스트가 있는 리포지토리
     TARGET_BRANCH: "main"                # 업데이트를 푸시할 브랜치
     TARGET_FILE: "green.yaml"             # 이미지 태그를 교체할 YAML 파일명
-    GITHUB_TOKEN: ""       # GitHub Personal Access Token (직접 입력 시)
+       # GitHub Personal Access Token (직접 입력 시)
 
 phases:
   # ========================================================
