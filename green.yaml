@@ -1,34 +1,33 @@
-# green.yaml
+#green.yaml
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: green-deploy      # 디플로이먼트의 고유 이름
-  namespace: wsk25          # 리소스가 생성될 네임스페이스
+  name: green-deploy
+  namespace: app
 spec:
-  replicas: 2             # 유지할 포드(Pod)의 개수
+  replicas: 2
   selector:
     matchLabels:
-      app: green          # 이 라벨을 가진 포드들을 관리함
+      app: green
   template:
     metadata:
       labels:
-        app: green        # 생성될 포드에 부여할 라벨
+        app: green
     spec:
-      serviceAccountName: jang # 포드가 사용할 권한 계정
+      serviceAccountName: jang
       nodeSelector:
-        app: wsk-eks-ng-app       # 노드 라벨이 'skills: app'인 노드에만 배포
+        skills: app
       containers:
         - name: green-deploy
-          # AWS ECR에 저장된 이미지 경로 및 태그(v1.0.0)
-          image: 640107381732.dkr.ecr.ap-northeast-2.amazonaws.com/wsk1/grapp:v1.0.0
+          image: 640107381732.dkr.ecr.ap-northeast-2.amazonaws.com/gmst-green-repo:v1.0.0
           ports:
-            - containerPort: 8080 # 컨테이너가 사용하는 포트
+            - containerPort: 8080
           envFrom:
             - secretRef:
-                name: secret      # 'secret'이라는 이름의 Secret에서 환경 변수를 가져옴
+                name: secret
           resources:
             requests:
-              cpu: "100m"         # 컨테이너 실행을 위한 최소 CPU 예약량
+              cpu: "100m"
             limits:
-              cpu: "200m"         # 컨테이너가 사용할 수 있는 최대 CPU 제한량
+              cpu: "200m"
