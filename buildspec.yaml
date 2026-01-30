@@ -62,7 +62,7 @@ phases:
 
       - echo "Cloning manifest repository..."
       # GitOps를 위해 설정용 리포지토리를 클론 (Token 인증 방식)
-      - git clone -b $TARGET_BRANCH https://$GITHUB_TOKEN@github.com/$GITHUB_USER/$TARGET_REPO.git repo2
+      - git clone -b $TARGET_BRANCH https://$TOKEN@github.com/$GITHUB_USER/$TARGET_REPO.git repo2
       - cd repo2
 
       - echo "Updating image tag in $TARGET_FILE..."
